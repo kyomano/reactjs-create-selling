@@ -1,0 +1,13 @@
+<%= form_tag filter_path  %>
+<%= select_tag "category", options_from_collection_for_select(@merchandise_categories, :id, :name) %>
+<%= submit_tag "Filter" %>
+
+
+<% @merchandises.each do |merch| %>
+    <div class="container">
+        <%= link_to merch.title, merchandise_path(merch)%>
+        <h4>$<%= merch.price %></h4>
+        <p><%= merch.description %></p>
+        <p><%= link_to merch.creator_name, creator_path(merch.creator)%></p>
+    </div>
+<% end %>

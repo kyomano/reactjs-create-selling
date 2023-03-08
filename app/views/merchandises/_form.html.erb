@@ -1,0 +1,10 @@
+
+<div class="card">
+    <%= form_for @merchandise, class: "card" do |f| %>
+        <%= f.text_field :title, placeholder: "Title" %>
+        <%= f.collection_select :merchandise_category_id, MerchandiseCategory.all, :id, :name, placeholder: "Category" %>
+        <%= f.text_area :description, placeholder: "Description" %>
+        <%= f.text_field :price, placeholder: "Price" %>
+        <%= f.submit "Sell It!!" %>
+    <% end %>
+</div>

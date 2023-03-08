@@ -1,0 +1,7 @@
+<% @category.merchandises.each do |merch| %>
+    <ul>
+        <li><%= link_to merch.creator_name, creator_path(merch.creator) %>
+        <li><%= link_to merch.title, merch_path(merch) %>
+        <li><%= merch.price %>
+    </ul>
+<% end %>

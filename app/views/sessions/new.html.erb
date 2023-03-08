@@ -1,0 +1,16 @@
+
+<%= render partial: "errors" %>
+<h3><%= link_to('Log in with Facebook!', '/auth/facebook') %></h3>
+
+<h2>OR</h2>
+
+<br>
+
+<%= form_tag "/sessions" %>
+<%= text_field_tag :username,nil, placeholder: "username" %><br>
+<%= text_field_tag :email,nil, placeholder: "email"%><br>
+<%= password_field_tag :password, nil, placeholder: "password"%><br>
+User<%= radio_button_tag 'u_c', 'u'%><br>
+Creator<%= radio_button_tag 'u_c', 'c'%><br>
+<%= submit_tag "LogIn" %>
+

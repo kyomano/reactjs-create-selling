@@ -1,0 +1,6 @@
+<h1>Creator Index</h1>
+
+<% @creators.each do |creator|%>
+    <h4><%= link_to creator.username, creator_path(creator) %></h4>
+    <p>Items:<%= link_to creator.merchandise_count, creator_merchandises_path(creator) %></p>
+<% end %>

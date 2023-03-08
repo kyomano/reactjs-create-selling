@@ -1,0 +1,8 @@
+<div class="card">
+    <%= form_with model: @review do |f|%>
+        <%= f.text_field :title, placeholder: "Title" %>
+        <%= f.text_field :body, placeholder: "body" %>
+        <%= f.text_field :rating, placeholder: "Rating(1-5)" %>
+        <%= f.submit "Submit"%>
+    <% end %>
+</div>

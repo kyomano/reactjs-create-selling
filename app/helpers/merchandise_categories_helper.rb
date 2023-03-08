@@ -1,0 +1,2 @@
+module MerchandiseCategoriesHelper
+end

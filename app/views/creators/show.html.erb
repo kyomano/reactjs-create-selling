@@ -1,0 +1,17 @@
+
+<%= render partial: "users/info", locals: {model: @creator} %>
+
+<% if current_creator && current_creator.id == @creator.id %>
+    <div class="creator-buttons">
+        <%= button_to "Edit Profile", edit_creator_path(@creator), method: "get" %>
+        <%= button_to "Add Merchandise", new_creator_merchandise_path(@creator.id), method: "get" %>
+    </div>
+<% end %>
+
+<% @creator.merchandises.last(5).each do |merch|%>
+    <div class="card">
+        <h3><%= link_to merch.title, creator_merchandise_path(@creator, merch) %></h3>
+        <h3><%= merch.price %></h3>
+        <p><%= merch.description%></p>
+    </div>
+<% end %>

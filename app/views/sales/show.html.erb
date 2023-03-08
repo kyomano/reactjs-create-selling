@@ -1,0 +1,10 @@
+
+<h1>SALE #<%= @sale.id %></h1>
+<h1> <%= link_to merch_title(@sale), merchandise_path(@sale.merchandise_id) %></h1>
+<br>
+<h2>Price: <%= merch_price(@sale) %></h2>
+<h2>Tip: <%= @sale.tip %></h2>
+<br>
+<h2>Total: <%= merch_total(@sale) %></h2>
+<p>Ship To: <%= @sale.shipping_address %></p>
+<p>Sold By: <%=link_to merch_creator_name(@sale), creator_path(@sale.merchandise.creator)%></p>

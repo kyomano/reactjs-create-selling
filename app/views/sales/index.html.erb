@@ -1,0 +1,14 @@
+<%#iterates current_users sales and displays info for each sale.%>
+
+<h1> Recent Transactions By <%= !!current_user ? current_user.username : current_creator.username %></h1>
+
+<% @sales.reverse.each do |sale| %>
+    <% if current_user %>
+        <h1>SALE #<%=link_to sale.id, user_sale_path(current_user.id, sale) %></h1>
+    <% elsif current_creator %>
+        <h1>SALE #<%= link_to sale.id, creator_sale_path(current_creator.id, sale) %></h1>
+    <% end %>
+        <h2><%= sale.merchandise.title %></h2>
+        <h2><%= merch_price(sale) %></h2>
+        <p>Sold By: <%=merch_creator_name(sale)%></p>
+<% end %>

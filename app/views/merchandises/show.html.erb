@@ -1,0 +1,36 @@
+<h2><%= @merchandise.title %><br>
+    Price: <%= @merchandise.price %>
+</h2>
+<p>Sold By: <%= link_to @merchandise.creator_name, creator_path(@merchandise.creator)%><br>
+<%= @merchandise.description %>
+
+<% if current_creator && current_creator.id == params[:creator_id].to_i %>
+    <%= button_to "Edit Item", edit_merchandise_path(@merchandise), method: "get" %>
+    <%= button_to "Delete Item", merchandises_path(@merchandise), method: :delete %>
+<% elsif current_user %>
+    <%= button_to "Buy", new_merchandise_sale_path(@merchandise), method: "get" %>
+<% end %>
+<p>---------------------------------------</p>
+<h1>Reviews: <%= @reviews.length %></h1>
+<% @reviews.each do |review| %>
+<h4><%= review.title %></h4>
+<p><%= review.body %> </p>
+<p>Rating: <strong><%= review.rating %></strong></p>
+<% end %>
+
+<% if current_user && current_user.merchandises.include?(@merchandise) %>
+<h3>It seems you've purchased this product in the past!<br>
+Please write a review:</h3>
+    <%= form_for @review do |f| %>
+        Title<br>
+            <%= f.text_field :title %><br>
+        Review<br>
+            <%= f.text_area :body %><br>
+        Rating(1-5)<br>
+            <%= f.text_field :rating %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :merchandise_id, value: @merchandise.id %>
+        <%= f.submit %>
+    <% end %>
+<% end %>
+
